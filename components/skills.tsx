@@ -1,49 +1,79 @@
-'use client'
+import type React from "react"
+import { Brain, Code, Database, Palette, BarChartIcon as ChartBar, Server, Globe, Cpu } from "lucide-react"
 
-import { motion } from 'framer-motion'
-import { FaReact, FaNode, FaDatabase, FaGitAlt } from 'react-icons/fa'
-import { SiTypescript, SiTailwindcss } from 'react-icons/si'
-
-const skills = [
-  { name: 'React', icon: FaReact, color: 'text-blue-500' },
-  { name: 'TypeScript', icon: SiTypescript, color: 'text-blue-600' },
-  { name: 'Node.js', icon: FaNode, color: 'text-green-500' },
-  { name: 'Tailwind CSS', icon: SiTailwindcss, color: 'text-cyan-400' },
-  { name: 'Database', icon: FaDatabase, color: 'text-gray-600' },
-  { name: 'Git', icon: FaGitAlt, color: 'text-orange-500' },
-]
-
-export const Skills = () => {
+export default function Skills() {
   return (
-    <section id="skills" className="py-8 md:py-12 px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="max-w-6xl mx-auto"
-      >
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 text-gray-800">
-          My Skills
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6">
-          {skills.map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="p-4 md:p-6 rounded-2xl border-2 border-gray-200 hover:border-blue-500 transition-all duration-300 group bg-white/50 backdrop-blur-sm"
-            >
-              <div className="flex flex-col md:flex-row items-center md:space-x-4 space-y-2 md:space-y-0">
-                <skill.icon className={`w-8 h-8 md:w-10 md:h-10 ${skill.color} group-hover:scale-110 transition-transform`} />
-                <h3 className="text-base md:text-xl font-semibold text-gray-800 text-center md:text-left">
-                  {skill.name}
-                </h3>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+    <section id="skills" className="py-10">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-bold mb-4 animate-fade-in">My Skills</h2>
+        <p className="text-gray-600 max-w-2xl mx-auto">Here are some of the technologies and tools I specialize in.</p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <SkillCard
+          icon={<Brain className="h-8 w-8 text-blue-600" />}
+          title="Machine Learning"
+          skills={["TensorFlow", "PyTorch", "Scikit-learn", "Neural Networks"]}
+          delay={0}
+        />
+        <SkillCard
+          icon={<ChartBar className="h-8 w-8 text-blue-600" />}
+          title="Data Science"
+          skills={["Data Analysis", "Pandas", "NumPy", "Visualization"]}
+          delay={100}
+        />
+        <SkillCard
+          icon={<Cpu className="h-8 w-8 text-blue-600" />}
+          title="AI Development"
+          skills={["NLP", "Computer Vision", "Reinforcement Learning", "GPT Integration"]}
+          delay={200}
+        />
+        <SkillCard
+          icon={<Code className="h-8 w-8 text-blue-600" />}
+          title="Frontend Development"
+          skills={["React", "Next.js", "TypeScript", "Tailwind CSS"]}
+          delay={300}
+        />
+        <SkillCard
+          icon={<Database className="h-8 w-8 text-blue-600" />}
+          title="Databases"
+          skills={["MongoDB", "PostgreSQL"]}
+          delay={400}
+        />
+        <SkillCard
+          icon={<Palette className="h-8 w-8 text-blue-600" />}
+          title="Design"
+          skills={["UI/UX Principles", "Figma", "Responsive Design", "Design Systems"]}
+          delay={600}
+        />
+      </div>
     </section>
+  )
+}
+
+interface SkillCardProps {
+  icon: React.ReactNode
+  title: string
+  skills: string[]
+  delay: number
+}
+
+function SkillCard({ icon, title, skills, delay }: SkillCardProps) {
+  return (
+    <div
+      className="rounded-2xl border-2 border-gray-200 p-6 hover:border-blue-200 transition-all duration-300 hover:-translate-y-2 hover:scale-110 bg-white/80 backdrop-blur-sm"
+      style={{ animationDelay: `${delay}ms` }}
+    >
+      <div className="flex flex-col items-center text-center">
+        <div className="mb-4">{icon}</div>
+        <h3 className="text-xl font-semibold mb-3">{title}</h3>
+        <ul className="space-y-2">
+          {skills.map((skill, index) => (
+            <li key={index} className="text-gray-600">
+              {skill}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   )
 }
