@@ -49,11 +49,45 @@ export default function Hero() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-10">
           <div className="md:w-1/2 space-y-6 text-center md:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 animate-fade-in">
-              Hi, I am <span className="text-blue-600">Ha1zyy</span>
+            <h1 className="text-lg md:text-3xl lg:text-4xl font-bold text-gray-900 animate-fade-in leading-loose">
+              <style jsx>{`
+                .wave {
+                  animation-name: wave-animation;
+                  animation-duration: 2.1s;
+                  animation-iteration-count: infinite;
+                  transform-origin: 70% 70%;
+                  display: inline-block;
+                }
+
+                @keyframes wave-animation {
+                  0% { transform: rotate(0deg); }
+                  10% { transform: rotate(14deg); }
+                  20% { transform: rotate(-8deg); }
+                  30% { transform: rotate(14deg); }
+                  40% { transform: rotate(-4deg); }
+                  50% { transform: rotate(10deg); }
+                  60% { transform: rotate(0deg); }
+                  100% { transform: rotate(0deg); }
+                }
+              `}</style>
+              <div className="space-y-4">
+                <div>
+                  <span className="md-3">Hi, There!{" "}</span>
+                  <span 
+                    className="wave" 
+                    role="img" 
+                    aria-labelledby="wave"
+                  >
+                    👋🏻
+                  </span>
+                </div>
+                <div>
+                  I'm <span className="text-blue-600">Ha1zyy</span>
+                </div>
+              </div>
             </h1>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-700 h-14">
-              <span className="text-blue-500">{displayText}</span>
+              <span className="text-blue-600">{displayText}</span>
               <span className="animate-pulse">|</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-lg">

@@ -19,7 +19,7 @@ export default function ProjectSvg({ type, className = "w-full h-full object-cov
     case "chat":
       return <Image src="/images/ai.PNG" {...imageProps} className={`${imageProps.className} text-purple-500`} />
     case "neural-network":
-      return <Image src="/images/ai.png" {...imageProps} className={`${imageProps.className} text-pink-500`} />
+      return <Image src="/images/chat.png" {...imageProps} className={`${imageProps.className} text-pink-500`} />
     case "dashboard":
       return <Image src="/images/dashboard.png" {...imageProps} className={`${imageProps.className} text-blue-600`} />
     case "documentation":
