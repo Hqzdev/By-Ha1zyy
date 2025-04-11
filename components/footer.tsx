@@ -52,23 +52,7 @@ export default function Footer() {
             </h3>
           </div>
 
-          <div className="flex justify-center md:justify-end">
-            <ul className="flex gap-4">
-              {socialLinks.map((link, index) => (
-                <li key={index} className="transform transition-transform hover:scale-110">
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-900 hover:text-blue-600 transition-colors"
-                    aria-label={link.label}
-                  >
-                    {link.icon}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+
         </div>
       </div>
     </footer>
