@@ -1,40 +1,9 @@
 "use client"
 
 import React from "react"
-import { AiFillGithub, AiOutlineTwitter, AiFillInstagram } from "react-icons/ai"
-import { FaLinkedinIn } from "react-icons/fa"
-
-interface SocialLink {
-  href: string
-  icon: JSX.Element
-  label: string
-}
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
-  
-  const socialLinks: SocialLink[] = [
-    {
-      href: "https://github.com/Ha1zyy",
-      icon: <AiFillGithub className="w-5 h-5" />,
-      label: "GitHub"
-    },
-    {
-      href: "https://twitter.com/Ha1zyy",
-      icon: <AiOutlineTwitter className="w-5 h-5" />,
-      label: "Twitter"
-    },
-    {
-      href: "https://www.linkedin.com/in/ha1zyy/",
-      icon: <FaLinkedinIn className="w-5 h-5" />,
-      label: "LinkedIn"
-    },
-    {
-      href: "https://www.instagram.com/ha1zyy",
-      icon: <AiFillInstagram className="w-5 h-5" />,
-      label: "Instagram"
-    }
-  ]
 
   return (
     <footer className="py-8">
