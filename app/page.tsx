@@ -2,8 +2,9 @@ import Header from "@/components/header"
 import Hero from "@/components/hero"
 import Skills from "@/components/skills"
 import Projects from "@/components/projects"
-import Roadmap from "@/components/roadmap"
 import Footer from "@/components/footer"
+import SocialLinks from "@/components/social-links"
+import About from "@/components/boutme"
 import FloatingElements from "@/components/floating-elements"
 import AnimatedGradient from "@/components/animated-gradient"
 
@@ -17,7 +18,8 @@ export default function Home() {
       <div className="container mx-auto px-4 py-8 space-y-20">
         <Skills />
         <Projects />
-        <Roadmap />
+        <About />
+        <SocialLinks />
       </div>
       <Footer />
     </div>

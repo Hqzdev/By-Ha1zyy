@@ -1,6 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Link from "next/link"
+
 
 export default function Hero() {
   const [displayText, setDisplayText] = useState("")
@@ -94,12 +96,16 @@ export default function Hero() {
               Building intelligent solutions with machine learning and creating beautiful, responsive web applications.
             </p>
             <div className="flex gap-4 justify-center md:justify-start">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-md">
-                Contact Me
-              </button>
-              <button className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-2 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105">
-                View Projects
-              </button>
+              <Link href="#contact">
+                <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-md">
+                  Contact Me
+                </button>
+              </Link>
+              <Link href="#projects">
+                <button className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-2 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105">
+                  View Projects
+                </button>
+              </Link>
             </div>
           </div>
           <div className="md:w-1/2 flex justify-center md:justify-end">
