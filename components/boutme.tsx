@@ -34,8 +34,8 @@ export default function About() {
               including <span className="text-blue-600 font-semibold">React.js and Next.js</span>.
             </p>
           </div>
-          <div className="w-full md:w-1/3 relative">
-            <div className="aspect-square relative rounded-2xl overflow-hidden  transform transition-transform hover:scale-105">
+          <div className="w-full md:w-1/3 relative hidden md:block">
+            <div className="aspect-square relative rounded-2xl overflow-hidden transform transition-transform hover:scale-105">
               <Image 
                 src="/images/avatar.PNG" 
                 alt="Profile Image"
