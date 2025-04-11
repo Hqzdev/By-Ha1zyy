@@ -2,11 +2,8 @@
 
 import type React from "react"
 
-import Link from "next/link"
-import { Menu } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import Link from "next/link"
 
 export default function Header() {
   // Function to handle smooth scrolling
@@ -21,99 +18,49 @@ export default function Header() {
     }
   }
   return (
-    <header className="sticky top-0 z-50 mx-auto border-2 border-gray-200 rounded-2xl mt-3 items-center justify-center bg-white/80 backdrop-blur-sm w-[400px]">
-      <div className="container flex h-16 items-center justify-center px-4 ">
+    <header className="sticky top-0 z-50 mx-auto rounded-2xl mt-3 items-center justify-center backdrop-blur-sm w-[400px]">
+      <div className="container flex h-16 items-center justify-center px-4">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl mr-10 font-bold text-blue-600 hover:scale-105 transition-transform">.HT</span>
+          <span className="text-xl mr-10 font-bold text-blue-600">.HT</span>
         </Link>
-        <nav className="hidden md:flex gap-6 text-lg">
+        <nav className="flex gap-6 text-lg">
           <Link
             href="#skills"
-            className="text-sm font-medium hover:text-blue-600 transition-colors hover:scale-105 transition-transform"
+            className="text-sm font-medium text-gray-900 relative after:absolute after:-bottom-1 after:left-0 after:h-[3px] after:w-0 after:rounded-full after:bg-blue-600 after:transition-all after:duration-500 hover:text-blue-600 hover:after:w-full"
             onClick={(e) => scrollToSection(e, "skills")}
           >
             Skills
           </Link>
           <Link
             href="#projects"
-            className="text-sm font-medium hover:text-blue-600 transition-colors hover:scale-105 transition-transform"
+            className="text-sm font-medium text-gray-900 relative after:absolute after:-bottom-1 after:left-0 after:h-[3px] after:w-0 after:rounded-full after:bg-blue-600 after:transition-all after:duration-500 hover:text-blue-600 hover:after:w-full"
             onClick={(e) => scrollToSection(e, "projects")}
           >
             Projects
           </Link>
           <Link
-            href="#roadmap"
-            className="text-sm font-medium hover:text-blue-600 transition-colors hover:scale-105 transition-transform"
-            onClick={(e) => scrollToSection(e, "roadmap")}
+            href="#about"
+            className="text-sm font-medium text-gray-900 relative after:absolute after:-bottom-1 after:left-0 after:h-[3px] after:w-0 after:rounded-full after:bg-blue-600 after:transition-all after:duration-500 hover:text-blue-600 hover:after:w-full"
+            onClick={(e) => scrollToSection(e, "about")}
           >
-            Roadmap
+            About
           </Link>
           <Link
             href="#contact"
-            className="text-sm font-medium hover:text-blue-600 transition-colors hover:scale-105 transition-transform"
+            className="text-sm font-medium text-gray-900 relative after:absolute after:-bottom-1 after:left-0 after:h-[3px] after:w-0 after:rounded-full after:bg-blue-600 after:transition-all after:duration-500 hover:text-blue-600 hover:after:w-full"
             onClick={(e) => scrollToSection(e, "contact")}
           >
             Contact
           </Link>
+          <Link
+            href="https://github.com/Hqzdev/By-Ha1zyy"
+            className="text-sm font-medium text-gray-900 relative after:absolute after:-bottom-1 after:left-0 after:h-[3px] after:w-0 after:rounded-full after:bg-blue-600 after:transition-all after:duration-500 hover:text-blue-600 hover:after:w-full"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </Link>
         </nav>
-        <div className="flex md:hidden">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <nav className="flex flex-col gap-4 mt-8">
-                <Link
-                  href="#skills"
-                  className="text-sm font-medium hover:text-blue-600 transition-colors"
-                  onClick={(e) => {
-                    scrollToSection(e, "skills")
-                    const closestButton = document.querySelector('[data-state="open"]') as HTMLElement
-                    if (closestButton) closestButton.click()
-                  }}
-                >
-                  Skills
-                </Link>
-                <Link
-                  href="#projects"
-                  className="text-sm font-medium hover:text-blue-600 transition-colors"
-                  onClick={(e) => {
-                    scrollToSection(e, "projects")
-                    const closestButton = document.querySelector('[data-state="open"]') as HTMLElement
-                    if (closestButton) closestButton.click()
-                  }}
-                >
-                  Projects
-                </Link>
-                <Link
-                  href="#roadmap"
-                  className="text-sm font-medium hover:text-blue-600 transition-colors"
-                  onClick={(e) => {
-                    scrollToSection(e, "roadmap")
-                    const closestButton = document.querySelector('[data-state="open"]') as HTMLElement
-                    if (closestButton) closestButton.click()
-                  }}
-                >
-                  Roadmap
-                </Link>
-                <Link
-                  href="#contact"
-                  className="text-sm font-medium hover:text-blue-600 transition-colors"
-                  onClick={(e) => {
-                    scrollToSection(e, "contact")
-                    const closestButton = document.querySelector('[data-state="open"]') as HTMLElement
-                    if (closestButton) closestButton.click()
-                  }}
-                >
-                  Contact
-                </Link>
-              </nav>
-            </SheetContent>
-          </Sheet>
-        </div>
       </div>
     </header>
   )
