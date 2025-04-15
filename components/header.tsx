@@ -7,26 +7,10 @@ import Link from "next/link"
 export default function Header() {
   const [activeTab, setActiveTab] = useState("")
   const [hoverPosition, setHoverPosition] = useState({ left: 0, width: 0 })
-  const [hoveredTab, setHoveredTab] = useState<string | null>(null)
   const navRef = useRef<HTMLDivElement>(null)
 
-  const handleLinkHover = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    setHoveredTab(id)
-    const link = e.currentTarget
-    const rect = link.getBoundingClientRect()
-    const navRect = navRef.current?.getBoundingClientRect()
-    
-    if (navRect) {
-      setHoverPosition({
-        left: rect.left - navRect.left,
-        width: rect.width,
-      })
-    }
-  }
-
-  const handleNavMouseLeave = () => {
-    setHoveredTab(null)
-    const activeLink = navRef.current?.querySelector(`[href="#${activeTab}"]`) as HTMLElement
+  const updateIndicatorPosition = (id: string) => {
+    const activeLink = navRef.current?.querySelector(`[href="#${id}"]`) as HTMLElement
     if (activeLink) {
       const rect = activeLink.getBoundingClientRect()
       const navRect = navRef.current?.getBoundingClientRect()
@@ -44,6 +28,7 @@ export default function Header() {
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault()
     setActiveTab(id)
+    updateIndicatorPosition(id)
     const element = document.getElementById(id)
     if (element) {
       window.scrollTo({
@@ -59,39 +44,19 @@ export default function Header() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveTab(entry.target.id)
-            const activeLink = navRef.current?.querySelector(`[href="#${entry.target.id}"]`) as HTMLElement
-            if (activeLink) {
-              const rect = activeLink.getBoundingClientRect()
-              const navRect = navRef.current?.getBoundingClientRect()
-              
-              if (navRect) {
-                setHoverPosition({
-                  left: rect.left - navRect.left,
-                  width: rect.width,
-                })
-              }
-            }
+            updateIndicatorPosition(entry.target.id)
           }
         })
       },
-      { threshold: 0.5 }
+      { threshold: 0.2, rootMargin: "-80px 0px 0px 0px" }
     )
 
     const sections = document.querySelectorAll("#skills, #projects, #about, #contact")
     sections.forEach((section) => observer.observe(section))
 
     // Initialize position for active tab
-    const activeLink = navRef.current?.querySelector(`[href="#${activeTab}"]`) as HTMLElement
-    if (activeLink) {
-      const rect = activeLink.getBoundingClientRect()
-      const navRect = navRef.current?.getBoundingClientRect()
-      
-      if (navRect) {
-        setHoverPosition({
-          left: rect.left - navRect.left,
-          width: rect.width,
-        })
-      }
+    if (activeTab) {
+      updateIndicatorPosition(activeTab)
     }
 
     return () => observer.disconnect()
@@ -107,56 +72,51 @@ export default function Header() {
           <nav 
             className="relative flex gap-1" 
             ref={navRef}
-            onMouseLeave={handleNavMouseLeave}
           >
             {/* Floating Background Indicator */}
             <div
-              className="absolute left-0 top-0 rounded-full bg-blue-600 hover:text-white transition-all duration-300 ease-out"
+              className="absolute left-0 top-0 rounded-full bg-blue-600 transition-all duration-300 ease-out"
               style={{
                 transform: `translateX(${hoverPosition.left}px)`,
                 width: `${hoverPosition.width}px`,
                 height: '100%',
-                opacity: hoveredTab ? 1 : 0.8,
+                opacity: 0.8,
               }}
             />
             
             <Link
               href="#skills"
-              className={`relative rounded-full px-4 py-1.5 text-sm font-medium text-gray-600 transition-colors duration-300 ${
-                hoveredTab === "skills" || activeTab === "skills" ? "text-white" : ""
+              className={`relative rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-300 ${
+                activeTab === "skills" ? "text-white" : "text-gray-500"
               }`}
               onClick={(e) => scrollToSection(e, "skills")}
-              onMouseEnter={(e) => handleLinkHover(e, "skills")}
             >
               Skills
             </Link>
             <Link
               href="#projects"
-              className={`relative rounded-full px-4 py-1.5 text-sm font-medium text-gray-600 transition-colors duration-300 ${
-                hoveredTab === "projects" || activeTab === "projects" ? "text-white" : ""
+              className={`relative rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-300 ${
+                activeTab === "projects" ? "text-white" : "text-gray-500"
               }`}
               onClick={(e) => scrollToSection(e, "projects")}
-              onMouseEnter={(e) => handleLinkHover(e, "projects")}
             >
               Projects
             </Link>
             <Link
               href="#about"
-              className={`relative rounded-full px-4 py-1.5 text-sm font-medium text-gray-600 transition-colors duration-300 ${
-                hoveredTab === "about" || activeTab === "about" ? "text-white" : ""
+              className={`relative rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-300 ${
+                activeTab === "about" ? "text-white" : "text-gray-500"
               }`}
               onClick={(e) => scrollToSection(e, "about")}
-              onMouseEnter={(e) => handleLinkHover(e, "about")}
             >
               About
             </Link>
             <Link
               href="#contact"
-              className={`relative rounded-full px-4 py-1.5 text-sm font-medium text-gray-600 transition-colors duration-300 ${
-                hoveredTab === "contact" || activeTab === "contact" ? "text-white" : ""
+              className={`relative rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-300 ${
+                activeTab === "contact" ? "text-white" : "text-gray-500"
               }`}
               onClick={(e) => scrollToSection(e, "contact")}
-              onMouseEnter={(e) => handleLinkHover(e, "contact")}
             >
               Contact
             </Link>
@@ -165,7 +125,7 @@ export default function Header() {
 
         <Link
           href="https://github.com/Hqzdev/By-Ha1zyy"
-          className="flex items-center rounded-full bg-gray-100/90 px-4 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-200/90 transition-colors duration-300 border-2 border-gray-200"
+          className="hidden sm:flex items-center rounded-full bg-gray-100/90 px-4 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-200/90 transition-colors duration-300 border-2 border-gray-200"
           target="_blank"
           rel="noopener noreferrer"
         >

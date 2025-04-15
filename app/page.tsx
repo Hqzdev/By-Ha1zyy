@@ -19,7 +19,9 @@ export default function Home() {
         <Skills />
         <Projects />
         <About />
-        <SocialLinks />
+        <div id="contact">
+          <SocialLinks />
+        </div>
       </div>
       <Footer />
     </div>
