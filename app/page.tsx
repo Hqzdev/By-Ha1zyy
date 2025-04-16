@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
       <AnimatedGradient />
-      <FloatingElements />
+      <FloatingElements/>
       <Header />
       <Hero />
       <div className="container mx-auto px-4 py-8 space-y-20">

@@ -2,7 +2,7 @@
 
 import React from "react"
 import { AiFillGithub, AiOutlineTwitter, AiFillInstagram } from "react-icons/ai"
-import { FaLinkedinIn } from "react-icons/fa"
+
 
 interface SocialLink {
   href: string
@@ -13,22 +13,17 @@ interface SocialLink {
 export default function SocialLinks() {
   const socialLinks: SocialLink[] = [
     {
-      href: "https://github.com/Ha1zyy",
+      href: "https://github.com/Hqzdev",
       icon: <AiFillGithub className="w-8 h-8" />,
       label: "GitHub"
     },
     {
-      href: "https://twitter.com/Ha1zyy",
+      href: "https://x.com/ha1zyy38089?s=21",
       icon: <AiOutlineTwitter className="w-8 h-8" />,
       label: "Twitter"
     },
     {
-      href: "https://www.linkedin.com/in/ha1zyy/",
-      icon: <FaLinkedinIn className="w-8 h-8" />,
-      label: "LinkedIn"
-    },
-    {
-      href: "https://www.instagram.com/ha1zyy",
+      href: "https://www.instagram.com/ha1zdev?igsh=MXJpMzJ5ZTNuMng1bw%3D%3D&utm_source=qr",
       icon: <AiFillInstagram className="w-8 h-8" />,
       label: "Instagram"
     }
@@ -38,11 +33,8 @@ export default function SocialLinks() {
     <section className="py-16 bg-white">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold mb-4 text-gray-900">FIND ME <span className="text-blue-600">ON</span></h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Feel free to <span className="text-blue-600 font-semibold">connect</span> with me
-        </p>
       </div>
-      <div className="max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-10 px-4">
+      <div className="max-w-4xl mx-auto grid grid-cols-3 gap-6 px-4">
         {socialLinks.map((link, idx) => (
           <div
             key={link.label}
@@ -58,7 +50,6 @@ export default function SocialLinks() {
               {link.icon}
             </a>
             <span className="text-lg font-semibold text-blue-700 mb-1">{link.label}</span>
-            <span className="text-xs text-gray-500 break-all">{link.href.replace('https://', '')}</span>
           </div>
         ))}
       </div>
