@@ -1,6 +1,6 @@
 # By-Ha1zyy Portfolio 🌟
 
-![GitHub](https://img.shields.io/github/license/Hqzdev/By-Ha1zyy) ![GitHub last commit](https://img.shields.io/github/last-commit/Hqzdev/By-Ha1zyy)
+
 
 Welcome to **By-Ha1zyy**, a personal portfolio showcasing my skills, projects, and experiences in software development, artificial intelligence, and beyond. This repository serves as a digital reflection of my journey, highlighting my passion for creating innovative solutions and contributing to the tech community.
 
